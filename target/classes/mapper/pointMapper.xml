@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="point">
+
+	<select id="selectPointList" parameterType="String"
+		resultType="com.ks.baseball.vo.PointVO">
+		select
+		member_number
+		,point
+		,game_finish_flag
+		,rec_create_date
+		,rec_update_date
+		,logical_del_flag
+		from
+		"POINTINFO"
+		where
+		member_number = #{member_number}
+
+	</select>
+	<insert id="insertPointList"
+		parameterType="com.ks.baseball.vo.PointVO">
+		insert into
+		"POINTINFO"(
+		member_number,
+		point,
+		game_finish_flag,
+		rec_create_date,
+		rec_update_date,
+		logical_del_flag
+		)values(
+		#{member_number},
+		'0',
+		'0',
+		CURRENT_TIMESTAMP,
+		CURRENT_TIMESTAMP,
+		'0'
+		)
+	</insert>
+
+	<update id="updatePointList"
+		parameterType="com.ks.baseball.vo.PointVO">
+		update
+		"POINTINFO"
+		set
+		point = #{point}
+		,rec_update_date = CURRENT_TIMESTAMP
+		where
+		member_number = #{member_number}
+	</update>
+
+	<update id="endPointList"
+		parameterType="com.ks.baseball.vo.PointVO">
+		update
+		"POINTINFO"
+		set
+		game_finish_flag = #{game_finish_flag}
+		,rec_update_date = CURRENT_TIMESTAMP
+		where
+		member_number = #{member_number}
+	</update>
+
+
+</mapper>

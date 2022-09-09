@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.ks.baseball.vo.MemberVO" alias="member"/>
+		<typeAlias type="com.ks.baseball.vo.PointVO" alias="point"/>
+		<typeAlias type="com.ks.baseball.vo.GameInfoVO" alias="game"/>
+		
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mapper/memberMapper.xml"/>
+		<mapper resource="mapper/pointMapper.xml"/>
+		<mapper resource="mapper/gameInfoMapper.xml"/>
+		
+		
+		
+	</mappers>
+
+
+</configuration>

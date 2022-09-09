@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game">
+
+
+	<select id="selectGameList"  parameterType="String" resultType= "com.ks.baseball.vo.GameInfoVO">
+		select
+		game_number
+		,member_number
+		,entered_number
+		,hidden_number
+		,rec_create_date
+		,rec_update_date
+		,logical_del_flag
+		from
+		"GAMEINFO"
+		where
+		member_number = #{member_number} AND
+		logical_del_flag = '0'
+
+	</select>
+
+	<insert id="insertGameList" parameterType="com.ks.baseball.vo.GameInfoVO">
+		insert into
+		"GAMEINFO"(
+		member_number
+		,entered_number
+		,hidden_number
+		,rec_create_date
+		,rec_update_date
+		,logical_del_flag
+		)values(
+		#{member_number},
+		'',
+		#{hidden_number},
+		CURRENT_TIMESTAMP,
+		CURRENT_TIMESTAMP,
+		'0'
+		)
+	</insert>
+
+	<update id="updateGameList" parameterType="com.ks.baseball.vo.GameInfoVO">
+		update
+		"GAMEINFO"
+		set
+		entered_number = #{entered_number}
+		,rec_update_date = CURRENT_TIMESTAMP
+		where
+		game_number = #{game_number}
+	</update>
+
+	<update id="deleteGameList" parameterType="com.ks.baseball.vo.GameInfoVO">
+		update
+		"GAMEINFO"
+		set
+		logical_del_flag = '1'
+		,rec_update_date = CURRENT_TIMESTAMP
+		where
+		game_number = #{game_number}
+	</update>
+
+</mapper>

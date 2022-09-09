@@ -5,8 +5,9 @@ import lombok.Data;
 @Data
 public class GameInfoVO {
 
-	private int game_number;
-	private int member_number;
+	private String game_number;
+	private String member_number;
+	private String hidden_number;
 	private String entered_number;
 	private String rec_create_date;
 	private String rec_update_date;

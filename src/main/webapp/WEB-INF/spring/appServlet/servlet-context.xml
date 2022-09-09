@@ -21,6 +21,15 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+		<!-- Exception Handling -->
+	<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	  <beans:property name="exceptionMappings">
+		<beans:props>
+			<beans:prop key="com.ks.baseball.exception.MemberException">login</beans:prop>			
+		</beans:props>
+	  </beans:property>
+	</beans:bean>
+	
 	<context:component-scan base-package="com.ks.baseball" />
 	
 	
